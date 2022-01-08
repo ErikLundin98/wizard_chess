@@ -8,7 +8,15 @@ public class Move {
         this.x2 = x2;
         this.y2 = y2;
     }
-
+    // Parse move from string in format <abcd>, e.g. 0001
+    public Move(String s) {
+        s = s.replaceAll("[^0-9]", "");
+        if(s.length() < 4) this.x1=-1;
+        this.x1 = Character.getNumericValue(s.charAt(0));
+        this.y1 = Character.getNumericValue(s.charAt(1));
+        this.x2 = Character.getNumericValue(s.charAt(2));
+        this.y2 = Character.getNumericValue(s.charAt(3));
+    }
     public String toString() {
         return "(("+this.x1+','+this.y1+")->("+this.x2+','+this.y2+"))";
     }

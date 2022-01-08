@@ -4,12 +4,15 @@ public abstract class Piece implements PieceInterface {
     enum SIDE {
         WHITE,
         BLACK,
-        NONE
+        NONE,
+        BOTH
     }
     protected SIDE side = SIDE.NONE; 
     protected String name;
-    public Piece(String name, SIDE side) {
+    protected PieceType type;
+    public Piece(String name, PieceType type, SIDE side) {
         this.name = name;
+        this.type = type;
         this.side = side;
     }
     @Override
@@ -25,8 +28,12 @@ public abstract class Piece implements PieceInterface {
         return null;
     }
     @Override
-    public boolean move(Move m, Board b) {
-        return b.movePiece(m);
+    public boolean preMove(Move m, Board b) {
+        return false;
+    }
+    @Override
+    public boolean postMove(Move m, Board b) {
+        return false;
     }
 
 }

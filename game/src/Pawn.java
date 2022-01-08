@@ -6,7 +6,7 @@ public class Pawn extends Piece {
     private boolean firstMove = true;
 
     public Pawn(SIDE side) {
-        super("Pawn ", side);
+        super("Pawn", PieceType.PAWN, side);
     }
 
     @Override
@@ -17,8 +17,8 @@ public class Pawn extends Piece {
         return moves;
     }
     @Override
-    public boolean move(Move m, Board b) { // Action associated with a move (after moving)
+    public boolean postMove(Move m, Board b) { // Action associated with a move (after moving)
         this.firstMove = false;
-        return false;
+        return true;
     }
 }
